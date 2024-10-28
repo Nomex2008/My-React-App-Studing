@@ -1,3 +1,9 @@
+.span {
+    color: #fff;
+    font-size: 20px;
+}
+
 .app {
     color: red;
+    text-align: center;
 }
