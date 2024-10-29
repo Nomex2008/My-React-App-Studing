@@ -1,9 +1,35 @@
-.span {
-    color: #fff;
-    font-size: 20px;
+button {
+    cursor: pointer;
 }
 
 .app {
     color: red;
     text-align: center;
+}
+
+.span {
+    color: #fff;
+    font-size: 20px;
+}
+.count {
+    margin-top: 40px;
+}
+
+.restart {
+    color: yellow;
+    cursor: pointer;
+
+    font-size: 22px;
+    margin-top: 10px;
+    user-select: none;
+
+    background-color: gray;
+    border-radius: 20px;
+    padding: 10px 5px;
+
+    transition: all .3s ease;
+}
+.restart:hover {
+    color: gray;
+    background-color: black;
 }
