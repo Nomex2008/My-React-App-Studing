@@ -16,8 +16,11 @@ const Count = () => {
             })}>{details.count}</button>
         </div>
 
-        {//<div onClick={() => setCount(count => count = 0)} className={styles.restart}>RESTART!</div>
-        }
+        <div onClick={() => setDetails(() => {
+            return {
+                count: 0
+            }
+        })} className={styles.restart}>RESTART!</div>
     </>
     )
 }
