@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(() => loading = false)
+      console.log('loading complete!')
     }, 1000)
 
     return () => {
