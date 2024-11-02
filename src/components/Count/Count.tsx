@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import styles from '../../app.module.css'
 
-const Count = () => {
+const InitialCount = () => {
     const [details, setDetails] = useState({
         count: 0
     })
@@ -24,5 +24,7 @@ const Count = () => {
     </>
     )
 }
+
+const Count = memo(InitialCount)
 
 export default Count
