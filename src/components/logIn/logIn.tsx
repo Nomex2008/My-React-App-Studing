@@ -1,9 +1,8 @@
-import { useContext } from 'react'
-import { AuthContext } from '../../AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 import styles from './login.module.css'
 
 const LogIn = () => {
-    const {isLogIn, setIsLogIn}= useContext(AuthContext)
+    const {isLogIn, setIsLogIn}= useAuth()
     
     return (
     <div className={styles.login}>
