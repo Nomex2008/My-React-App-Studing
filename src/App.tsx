@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import styles from './app.module.css'
 import Count from './components/Count/Count'
 import Hero from './components/Hero/Hero'
+import LogIn from './components/logIn/logIn'
 
 
 const role = 'admin'
 
 function App() {
-
+  
   let [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -26,7 +27,7 @@ function App() {
 
       {loading 
       ? <div>Loading...</div> 
-      : <> <Hero role={role}/> <Count/> </>}
+      : <> <Hero role={role}/> <LogIn/> <Count/> </>}
 
     </section>
   )

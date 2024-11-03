@@ -1,0 +1,17 @@
+.login {
+    margin-top: 20px;
+}
+
+.button {
+    border-radius: 20px;
+    color: yellow;
+    border: 0;
+    background-color: gray;
+
+    transition: all .3s ease;
+    padding: 5px 10px;
+}
+.button:hover {
+    background-color: black;
+    color: gray;
+}
