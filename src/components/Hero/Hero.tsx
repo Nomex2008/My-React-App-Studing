@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 let isAuth = false
 
 const NAME = [
@@ -18,6 +20,10 @@ const Hero = ({role}: any) => {
       : role === 'admin'
       ? 'Admin'
       : 'Log in!'}
+
+      <div>
+      <Link to='/about-us'>Go to about us</Link>
+      </div>
       
     </>
   )
