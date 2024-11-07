@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './app.module.css'
 import Count from './components/Count/Count'
 import GetApi from './components/GetApi/GetApi'
@@ -8,6 +9,8 @@ import LogIn from './components/logIn/logIn'
 
 const role = 'admin'
 
+let time = 0; 
+
 function App() {
   
   let [loading, setLoading] = useState(true)
@@ -16,7 +19,7 @@ function App() {
     const timeout = setTimeout(() => {
       setLoading(() => loading = false)
       console.log('loading complete!')
-    }, 1000)
+    }, time)
 
     return () => {
       clearTimeout(timeout)
@@ -28,7 +31,9 @@ function App() {
 
       {loading 
       ? <div>Loading...</div> 
-      : <> <Hero role={role}/> <LogIn/> <Count/> <GetApi/> </>}
+      : <> <Hero role={role}/> <LogIn/> 
+        <div className={styles.send}><Link to='/Send'>Let's go send a mail!</Link></div>
+        <Count/> <GetApi/> </>}
 
     </section>
   )

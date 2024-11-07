@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import {AuthProvider} from './AuthContext'
 import AboutUs from './components/AboutUs/AboutUs';
+import Send from './components/Send/Send';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/about-us",
     element: <AboutUs/>,
+  },
+  {
+    path: "/send",
+    element: <Send/>,
   },
 ]);
 

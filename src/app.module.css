@@ -34,3 +34,14 @@ button {
     color: gray;
     background-color: black;
 }
+
+.send {
+    margin-top: 20px;
+    font-size: 30px;
+}
+.send a {
+    color: blue;
+}
+.send a:active {
+    color: red;
+}
