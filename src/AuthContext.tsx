@@ -1,13 +1,5 @@
-import { createContext, useState, ReactNode  } from 'react'
-
-interface AuthContextType {
-  isLogIn: boolean;
-  setIsLogIn: (value: boolean) => void; // Функція для зміни стану
-}
-
-interface AuthProviderProps {
-  children: ReactNode;
-}
+import { createContext, useState  } from 'react'
+import { AuthContextType, AuthProviderProps } from './types'
 
 export const AuthContext = createContext<AuthContextType>({
     isLogIn: false,
