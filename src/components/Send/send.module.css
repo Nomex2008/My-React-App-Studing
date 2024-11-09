@@ -1,6 +1,84 @@
 .send {
-
+    max-width: 600px;
 }
+.title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: red;
+}
+
+.card {
+    background-color:rgb(47, 44, 47);
+    padding: 20px 10px;
+    border-radius: 20px;
+}
+
+.editor {
+    background-color:rgba(100, 78, 100);
+    padding: 7px 10px;
+    border-radius: 10px 10px 0 0;
+    min-width: calc(600px - 42px);
+    height: 160px;
+    resize: none;
+}
+
+.action {
+    border: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgba(100, 78, 100);
+    padding: 7px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tools button{
+    background-color:#644E6466;
+    border: 0;
+    transition: all .3s ease;
+    color: white;
+}
+.tools button:hover {
+    color: red;
+}
+.tools button:active {
+    transform: scale(.9);
+}
+
+.button {
+    padding: 10px 15px;
+    border-radius: 20px;
+    background-color:rgba(100, 78, 100, 0.4);
+    border: 1px solid white;
+    transition: all .3s ease;
+    color: white;
+}
+.button:hover {
+    color: red;
+    border: 1px solid red;
+}
+.button:active {
+    transform: scale(.9);
+}
+
+.emailList {
+    margin-top: 20px;
+    background-color:rgb(47, 44, 47);
+    padding: 20px 10px;
+    border-radius: 20px;
+}
+
 .return {
-    
+    margin-top: 40px;
+}
+.return a {
+    transition: all .3s ease;
+}
+.return a:hover {
+    color: red;
 }
