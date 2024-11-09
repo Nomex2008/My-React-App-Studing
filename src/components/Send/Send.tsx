@@ -4,18 +4,16 @@ import EmailList from "./EmailList/EmailList"
 import styles from './send.module.css'
 
 const Send = () => {
-  let text = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam recusandae aliquam, aspernatur quo eius quod dolorem et veniam? Beatae doloribus totam tenetur ad doloremque nobis quo repellat itaque vel et?'
-
   return (
     <section className={styles.send}>
 
       <h1 className={styles.title}>Email editor</h1>
 
       <div className={styles.card}>
-        <textarea className={styles.editor} spellCheck='false' 
-        value={text}
-        onChange={() => {}}/>
-        <div className={styles.action}>
+        <div className={styles.editor} spellCheck='false'>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem veniam maiores exercitationem soluta ab nemo alias ratione aut voluptate dolorum tempora autem, doloribus nobis voluptates, minima tempore quisquam voluptas quam!
+        </div>
+        <div className={styles.action}> 
           <div className={styles.tools}>
             <button><Eraser/></button>
             <button><Bold/></button>
