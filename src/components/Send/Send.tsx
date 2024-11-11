@@ -1,17 +1,18 @@
 import { Bold, Eraser, Italic, Underline } from "lucide-react"
-import { TextareaHTMLAttributes, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { Link } from "react-router-dom"
+import { TType } from "../../types"
+import { applyStyle } from "./email-editor/apply-style"
 import EmailList from "./EmailList/EmailList"
 import styles from './send.module.css'
 
 const Send = () => {
-  const [text, setText] = useState(`
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem veniam maiores exercitationem soluta ab nemo alias ratione aut voluptate dolorum tempora autem, doloribus nobis voluptates, minima tempore quisquam voluptas quam!
+  const [text, setText] = useState(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem veniam maiores exercitationem soluta ab nemo alias ratione aut voluptate dolorum tempora autem, doloribus nobis voluptates, minima tempore quisquam voluptas quam!
   `)
 
   const textRef = useRef<HTMLTextAreaElement | null>(null)
 
-  const getSelectionText = () => {
+  const applyFormat = (type: TType) => {
     if(!textRef.current) return
 
     let cursorStart = textRef.current?.selectionStart
@@ -20,6 +21,11 @@ const Send = () => {
     let selectedText = text.substring(cursorStart, cursorEnd)
 
     if(!selectedText) return
+
+    const before = text.substring(0, cursorEnd)
+    const after = text.substring(cursorEnd)
+
+    setText(before + applyStyle(type, selectedText) + after)
   }
 
   return (
@@ -34,11 +40,12 @@ const Send = () => {
         spellCheck='false'
         value={text}
         onChange={e => setText(e.target.value)}
-        onClick={getSelectionText}>
+        //onClick={applyFormat}
+        >
         </textarea>
         <div className={styles.action}> 
           <div className={styles.tools}>
-            <button><Eraser/></button>
+            <button onClick={() => setText('')}><Eraser/></button>
             <button><Bold/></button>
             <button><Italic/></button>
             <button><Underline/></button>

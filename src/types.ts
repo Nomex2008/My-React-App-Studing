@@ -9,4 +9,4 @@ export interface AuthProviderProps {
     children: ReactNode;
 }
 
-  
+export type TType = 'bold' | 'italic' | 'underline'
