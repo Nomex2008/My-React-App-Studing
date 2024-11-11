@@ -1,4 +1,5 @@
 import { Bold, Eraser, Italic, Underline } from "lucide-react"
+import { parse } from "path"
 import { useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { TType } from "../../types"
@@ -7,23 +8,27 @@ import EmailList from "./EmailList/EmailList"
 import styles from './send.module.css'
 
 const Send = () => {
-  const [text, setText] = useState(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem veniam maiores exercitationem soluta ab nemo alias ratione aut voluptate dolorum tempora autem, doloribus nobis voluptates, minima tempore quisquam voluptas quam!
+  const [selectionStart,setSelectionStart] = useState(0)
+  const [selectionEnd,setSelectionEnd] = useState(0)
+
+  const [text, setText] = useState(`<u>Lorem ipsum dolor sit</u> amet consectetur adipisicing elit. Rem veniam maiores exercitationem soluta ab nemo alias ratione aut voluptate dolorum tempora autem, doloribus nobis voluptates, minima tempore quisquam voluptas quam!
   `)
 
   const textRef = useRef<HTMLTextAreaElement | null>(null)
 
+  const updateSelection = () => {
+    if(!textRef.current) return;
+    setSelectionStart(textRef.current.selectionStart)
+    setSelectionEnd(textRef.current.selectionEnd)
+  }
+
   const applyFormat = (type: TType) => {
-    if(!textRef.current) return
-
-    let cursorStart = textRef.current?.selectionStart
-    let cursorEnd = textRef.current?.selectionEnd
-
-    let selectedText = text.substring(cursorStart, cursorEnd)
+    let selectedText = text.substring(selectionStart, selectionEnd)
 
     if(!selectedText) return
 
-    const before = text.substring(0, cursorEnd)
-    const after = text.substring(cursorEnd)
+    const before = text.substring(0, selectionStart)
+    const after = text.substring(selectionEnd)
 
     setText(before + applyStyle(type, selectedText) + after)
   }
@@ -34,21 +39,26 @@ const Send = () => {
       <h1 className={styles.title}>Email editor</h1>
 
       <div className={styles.card}>
+
+        <div>
+          {parse(text)}
+        </div>
+
         <textarea  
         ref={textRef}
         className={styles.editor} 
         spellCheck='false'
         value={text}
         onChange={e => setText(e.target.value)}
-        //onClick={applyFormat}
+        onSelect={updateSelection}
         >
         </textarea>
         <div className={styles.action}> 
           <div className={styles.tools}>
             <button onClick={() => setText('')}><Eraser/></button>
-            <button><Bold/></button>
-            <button><Italic/></button>
-            <button><Underline/></button>
+            <button onClick={() => applyFormat('bold')}><Bold/></button>
+            <button onClick={() => applyFormat('italic')}><Italic/></button>
+            <button onClick={() => applyFormat('underline')}><Underline/></button>
           </div>
           <button className={styles.button}>Send now</button>
         </div>
