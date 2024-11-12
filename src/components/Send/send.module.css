@@ -13,12 +13,19 @@
     border-radius: 20px;
 }
 
+.preview {
+    background-color:rgba(100, 78, 100);
+    padding: 7px 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    min-height: 24px;
+}
 .editor {
     background-color:rgba(100, 78, 100);
     padding: 7px 10px;
     border-radius: 10px 10px 0 0;
     min-width: calc(600px - 42px);
-    min-height: 160px;
+    min-height: 200px;
     font-size: 20px;
     resize: none;
 }

@@ -1,5 +1,5 @@
 import { Bold, Eraser, Italic, Underline } from "lucide-react"
-import { parse } from "path"
+import parse from 'html-react-parser';
 import { useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { TType } from "../../types"
@@ -40,7 +40,7 @@ const Send = () => {
 
       <div className={styles.card}>
 
-        <div>
+        <div className={styles.preview} >
           {parse(text)}
         </div>
 
