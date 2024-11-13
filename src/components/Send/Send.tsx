@@ -6,22 +6,26 @@ import { TType } from "../../types"
 import { applyStyle } from "./email-editor/apply-style"
 import EmailList from "./EmailList/EmailList"
 import styles from './send.module.css'
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { emailService } from "../../services/email.service";
 
 const Send = () => {
   const [selectionStart,setSelectionStart] = useState(0)
   const [selectionEnd,setSelectionEnd] = useState(0)
 
-  const [text, setText] = useState(`<u>Lorem ipsum dolor sit</u> amet consectetur adipisicing elit. Rem veniam maiores exercitationem soluta ab nemo alias ratione aut voluptate dolorum tempora autem, doloribus nobis voluptates, minima tempore quisquam voluptas quam!
-  `)
+  const [text, setText] = useState(``)
 
   const textRef = useRef<HTMLTextAreaElement | null>(null)
+
+  const queryClient = useQueryClient()
 
   const {mutate, isPending} = useMutation({
     mutationKey: ['create email'],
     mutationFn: () => emailService.sendEmails(text),
-    onSuccess(){setText('')}
+    onSuccess(){
+      setText('')
+      queryClient.refetchQueries({queryKey: ['email list']})
+    }
   })
 
   const updateSelection = () => {
