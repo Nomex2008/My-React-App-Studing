@@ -6,6 +6,8 @@ import { TType } from "../../types"
 import { applyStyle } from "./email-editor/apply-style"
 import EmailList from "./EmailList/EmailList"
 import styles from './send.module.css'
+import { useMutation } from "@tanstack/react-query";
+import { emailService } from "../../services/email.service";
 
 const Send = () => {
   const [selectionStart,setSelectionStart] = useState(0)
@@ -15,6 +17,12 @@ const Send = () => {
   `)
 
   const textRef = useRef<HTMLTextAreaElement | null>(null)
+
+  const {mutate, isPending} = useMutation({
+    mutationKey: ['create email'],
+    mutationFn: () => emailService.sendEmails(text),
+    onSuccess(){setText('')}
+  })
 
   const updateSelection = () => {
     if(!textRef.current) return;
@@ -60,7 +68,7 @@ const Send = () => {
             <button onClick={() => applyFormat('italic')}><Italic/></button>
             <button onClick={() => applyFormat('underline')}><Underline/></button>
           </div>
-          <button className={styles.button}>Send now</button>
+          <button disabled={isPending} onClick={()  => mutate()} className={styles.button}>Send now</button>
         </div>
       </div>
 

@@ -9,6 +9,7 @@ import {
 import {AuthProvider} from './AuthContext'
 import AboutUs from './components/AboutUs/AboutUs';
 import Send from './components/Send/Send';
+import Provider from './Provider';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router}/>
+      <Provider>
+        <RouterProvider router={router}/>
+      </Provider>
     </AuthProvider>
   </React.StrictMode>,
 )
